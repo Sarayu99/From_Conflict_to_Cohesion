@@ -5,7 +5,7 @@ The comments from 5 subreddits 'aita', 'news', 'politics', 'science', 'worldnews
 For each week, the following was performed-
 Step 1: For each week, the aggressive language variables are computed using Detoxify. The following code file is used-
   * cross_sectional_analyses/MayJune2022Subreddits_AggressiveLanguage.ipynb
-Step 2: For each week, the aggressive language dictinary obtained from the previous step is processed to create a seperate column for each toxicity output, and then node embeddings are created. The following code file is used-
+Step 2: For each week, the aggressive language dictionary obtained from the previous step is processed to create a seperate column for each toxicity output, and then node embeddings are created. The following code file is used-
   * cross-sectional_analyses/MayJuneSubreddits2022_network_Similarity.ipynb
 Step 3: For each week, the languague similarity is calculated using SBERT. The following code file was used-
   * cross_sectional_analyses/MayJune2022Subreddits_Language_Similarity.ipynb
