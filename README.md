@@ -1,6 +1,6 @@
 # From_Conflict_to_Cohesion
 
-This repository contains the code base for the work, 'From Conflict to Cohesion: Structural Similarity Dampens Uncivil Discourse in Polarized Social Groups'.
+This repository contains the code base for the work, *'From Conflict to Cohesion: Structural Similarity Dampens Uncivil Discourse in Polarized Social Groups'*.
 
 Authors: Matthew Yeaton, Sarayu Anshuman, Sameer Srivastava
 
