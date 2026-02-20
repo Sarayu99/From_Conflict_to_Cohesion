@@ -8,7 +8,7 @@ Authors: Matthew Yeaton, Sarayu Anshuman, Sameer Srivastava
 ---
 Input : The data consist of 5 million comments made on the Reddit platform by over 1.7 million users who are part of six groups (i.e., subreddits) that discuss such contentious topics as politics, cultural norms, science, and labor movements. The input data are first cleaned and processed.
 
-*Note: The data have been modified to protect the data use agreements.*
+*Note: The data have been modified to protect the data use agreements. Please note that author identifiers (e.g., “author0”) are not consistent across datasets. Each dataset was de-identified independently, so identical numeric labels do not imply the same underlying individual. This also applied to all the de-identified data columns.*
 
 **Main Folders**
 ----
