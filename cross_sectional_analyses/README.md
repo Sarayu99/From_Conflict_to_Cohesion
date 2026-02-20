@@ -8,3 +8,5 @@ For each week/subset of a week, the following was performed-
 * Step 3: For each week's comments, the word embeddings data are generated using SBERT. The following notebook is used - *cross_sectional_analyses/semanticSimilarity.ipynb*<br>
 
 Note: We proceed with a directed dyad modeling approach, i.e., each observation in the final cross-sectional data set is at the (sender, receiver,week,subreddit,thread) level. These observation form directed dyads because they are of the form (i,j,t,s,h) which is different from (j,i,t,s,h).
+
+The following scripts: *2_r_script.R, 3_R_script.R* generate tables and figures of the paper.
