@@ -11,7 +11,6 @@
 #
 # INPUTS: 
 # - redditPanel_week_by_thread_de_identified.parquet
-# - redditPanel_week_structuralMeasures_all_withDirectedTox_deidentified.parquet
 #
 # OUTPUTS: 
 # - no output file generated
