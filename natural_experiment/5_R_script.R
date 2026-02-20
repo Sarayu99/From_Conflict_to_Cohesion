@@ -59,7 +59,7 @@ library(stargazer)  # For formatted table output
 # Table 8: diff-in-diff analysis for natural experiment shifting group polarization
 ####################################################################################################################
 
-postsClean = read_parquet('/home/sarayu_anshuman/redditdata/codes/sarayu_codes/Python_codes/generated_files_final/nat_exp_deidentified.parquet')
+postsClean = read_parquet('/data/nat_exp_deidentified.parquet')
 
 
 m1 = feols(directed_tox ~ networkSimilarity | author + receiver, postsClean, fixef.rm = 'singleton')
@@ -77,10 +77,7 @@ etable(m1,m2,m3,m4, tex = FALSE, cluster = c('author', 'receiver'), fitstat=c('n
 # # Figure 6: event study representation for natural experiment shifting group polarization
 ####################################################################################################################
 
-data_TreatControl = read_parquet('/home/sarayu_anshuman/redditdata/codes/sarayu_codes/Python_codes/generated_files_final/nat_exp_full_deidentified.parquet')
-
-# de-identfied
-#data_TreatControl = read_parquet('/home/sarayu_anshuman/redditdata/codes/sarayu_codes/sarayu_generated_data_files/de_identified_datasets/nat_exp_full_deidentified.parquet')
+data_TreatControl = read_parquet('/data/nat_exp_full_deidentified.parquet')
 
 # rename the variable author to sender
 data_TreatControl <- rename(data_TreatControl, sender = author)
