@@ -20,8 +20,3 @@ A description of the main folders in this repository. <br>
 * *misc_tables_figures* folder : contains additional codes for some tables and figures
 * *robustness_checks* folder : contains codes for the supplemental analyses and robustness checks
 
-**Order of Execution**
-----
-
-There is no fixed order of execution of the programs. The two main folders are the *cross_sectional_analyses* folder and the *natural_experiment* folder.
-
