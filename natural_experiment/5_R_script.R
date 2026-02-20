@@ -13,7 +13,7 @@
 # - nat_exp_full_deidentified.parquet
 #
 # OUTPUTS: 
-# - no output file generated
+# - Rplots.pdf
 #
 # NOTE
 # - Please change file paths as per required
