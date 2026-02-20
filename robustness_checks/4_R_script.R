@@ -341,7 +341,7 @@ etable(mSO, tex = FALSE, cluster = c('author', 'receiver'), fitstat=c('n', 'r2')
 # Robustness Analyses: (Table A2)
 ####################################################################################################################
 
-# # Load the data (this data is at the comment level and was hence not made public. However, the code is show below for reference).
+# # Load the data (this data is at the comment level and was hence not made uploaded to github. However, the sample code is shown below for reference).
 # redditPanel = read_parquet('/data/march2Weeks_subset_deidentified.parquet')
 
 
