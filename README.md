@@ -13,10 +13,10 @@ Input : The data consist of 5 million comments made on the Reddit platform by ov
 **Main Folders**
 ----
 A description of the main folders in this repository. <br>
-**<ins>Each folder has its own *README.md* file detailing the folder's contents.</ins>**
+Each folder has its own *README.md* file detailing the folder's contents.
 
 * *cross_sectional_analyses* folder : contains the codes for the main analyses
 * *natural_experiment* folder : contains the codes for the natural experiment
-* *misc_tables_figures* folder : contains additional codes for some tables and figures
 * *robustness_checks* folder : contains codes for the supplemental analyses and robustness checks
+* *requirements.txt* file: the versions of some important packages used
 
