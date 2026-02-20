@@ -84,7 +84,7 @@ to_odds_ratio <- function(model) {
 ####################################################################################################################
 
 #import the data
-redditPanel = read_parquet("/home/sarayu_anshuman/redditdata/codes/sarayu_codes/Python_codes/generated_files_final/redditPanel_week_by_thread_de_identified.parquet")
+redditPanel = read_parquet("/data/redditPanel_week_by_thread_de_identified.parquet")
 setDT(redditPanel)
 
 # scale the variables
@@ -123,7 +123,7 @@ etable(m1,m2,m3,m4,m5,m6, tex = FALSE, fitstat=c('n', 'pr2'), signif.code = c("*
 # Robustness Analyses: Exclusion of likly bots (Table A5)
 ####################################################################################################################
 #import the data
-redditPanel = read_parquet("/home/sarayu_anshuman/redditdata/codes/sarayu_codes/Python_codes/generated_files_final/redditPanel_week_by_thread_de_identified.parquet")
+redditPanel = read_parquet("/data/redditPanel_week_by_thread_de_identified.parquet")
 setDT(redditPanel)
 
 gc()
@@ -163,7 +163,7 @@ etable(m1,m2,m3,m4,m6,m7, tex = TRUE, cluster = c('author', 'receiver'), fitstat
 # Robustness Analyses: dropping profanity, NTA, and alternate convex combinations of directedness (Table A6)
 # ####################################################################################################################
 
-redditPanel = read_parquet('/home/sarayu_anshuman/redditdata/codes/sarayu_codes/Python_codes/generated_files_final/redditPanel_week_drop_profanity_de_identified.parquet')
+redditPanel = read_parquet('/data/redditPanel_week_drop_profanity_de_identified.parquet')
 
 # scale the variables
 redditPanel$networkSimilarity = as.vector(scale(redditPanel$networkSimilarity))
@@ -171,7 +171,7 @@ redditPanel$languageSimilarity_commentLevel = as.vector(scale(redditPanel$langua
 redditPanel$directed_tox = as.vector(scale(redditPanel$directed_tox))
 m1 = feols(directed_tox ~ networkSimilarity + languageSimilarity_commentLevel | dyad + week + subreddit , redditPanel, fixef.rm = 'singleton', cluster = c('author','receiver'))
 
-redditPanel = read_parquet('/home/sarayu_anshuman/redditdata/codes/sarayu_codes/Python_codes/generated_files_final/redditPanel_week_by_thread_drop_nta_de_identified.parquet')
+redditPanel = read_parquet('/data/redditPanel_week_by_thread_drop_nta_de_identified.parquet')
 
 # scale the variables
 redditPanel$networkSimilarity = as.vector(scale(redditPanel$networkSimilarity))
@@ -179,7 +179,7 @@ redditPanel$languageSimilarity_commentLevel = as.vector(scale(redditPanel$langua
 redditPanel$directed_tox = as.vector(scale(redditPanel$directed_tox))
 m2 = feols(directed_tox ~ networkSimilarity + languageSimilarity_commentLevel | dyad + week + subreddit , redditPanel, fixef.rm = 'singleton', cluster = c('author','receiver'))
 
-redditPanel = read_parquet("/home/sarayu_anshuman/redditdata/codes/sarayu_codes/Python_codes/generated_files_final/redditPanel_week_by_thread_de_identified.parquet")
+redditPanel = read_parquet("/data/redditPanel_week_by_thread_de_identified.parquet")
 
 # scale the variables
 redditPanel$networkSimilarity = as.vector(scale(redditPanel$networkSimilarity))
@@ -203,7 +203,7 @@ etable(m1,m2,m3,m4,m5, tex = TRUE, cluster = c('author', 'receiver'), fitstat=c(
 # Robustness Analyses: Alternative Toxicity Measures (Table A7)
 ####################################################################################################################
 #import the data
-redditPanel = read_parquet("/home/sarayu_anshuman/redditdata/codes/sarayu_codes/Python_codes/generated_files_final/redditPanel_week_by_thread_de_identified.parquet")
+redditPanel = read_parquet("/data/redditPanel_week_by_thread_de_identified.parquet")
 
 setDT(redditPanel)
 setDT(redditPanel)
@@ -257,7 +257,7 @@ etable(m1d,m2d,m3d,m4d,m5d,m6d, tex = TRUE, cluster = c('author', 'receiver'), f
 
 #Note: there might be multicollinearity in the given model, so numerical instability in estimates is possible.
 
-redditPanel = read_parquet('/home/sarayu_anshuman/redditdata/codes/sarayu_codes/Python_codes/generated_files_final/redditPanel_week_structuralMeasures_all_withDirectedTox_deidentified.parquet')
+redditPanel = read_parquet('/data/redditPanel_week_structuralMeasures_all_withDirectedTox_deidentified.parquet')
 names(redditPanel)
 
 # scale the variables
@@ -341,84 +341,84 @@ etable(mSO, tex = FALSE, cluster = c('author', 'receiver'), fitstat=c('n', 'r2')
 # Robustness Analyses: (Table A2)
 ####################################################################################################################
 
-# # Load the data
-redditPanel = read_parquet('/home/sarayu_anshuman/redditdata/codes/sarayu_codes/Python_codes/generated_files_final/march2Weeks_subset_deidentified.parquet')
+# # Load the data (this data is at the comment level and was hence not made public. However, the code is show below for reference).
+# redditPanel = read_parquet('/data/march2Weeks_subset_deidentified.parquet')
 
 
-makeSummaryTable = function(num_data) {
-  #-----------------------------
-  # 1. Compute Descriptive Statistics & Correlations
-  #-----------------------------
-  means <- colMeans(num_data, na.rm = TRUE)
-  sds   <- apply(num_data, 2, sd, na.rm = TRUE)
+# makeSummaryTable = function(num_data) {
+#   #-----------------------------
+#   # 1. Compute Descriptive Statistics & Correlations
+#   #-----------------------------
+#   means <- colMeans(num_data, na.rm = TRUE)
+#   sds   <- apply(num_data, 2, sd, na.rm = TRUE)
   
-  # Compute the correlation matrix and associated p-values
-  cor_results <- rcorr(as.matrix(num_data))
-  cor_matrix  <- cor_results$r    # correlation coefficients
-  p_matrix    <- cor_results$P    # p-values
+#   # Compute the correlation matrix and associated p-values
+#   cor_results <- rcorr(as.matrix(num_data))
+#   cor_matrix  <- cor_results$r    # correlation coefficients
+#   p_matrix    <- cor_results$P    # p-values
   
-  #-----------------------------
-  # 2. Define a Helper Function for Significance Stars
-  #-----------------------------
-  getStars <- function(p) {
-    if (p < 0.001) {
-      return("***")
-    } else if (p < 0.01) {
-      return("**")
-    } else if (p < 0.05) {
-      return("*")
-    } else {
-      return("")
-    }
-  }
+#   #-----------------------------
+#   # 2. Define a Helper Function for Significance Stars
+#   #-----------------------------
+#   getStars <- function(p) {
+#     if (p < 0.001) {
+#       return("***")
+#     } else if (p < 0.01) {
+#       return("**")
+#     } else if (p < 0.05) {
+#       return("*")
+#     } else {
+#       return("")
+#     }
+#   }
   
-  #-----------------------------
-  # 3. Build the Combined Table
-  #-----------------------------
-  # The final table will have:
-  # - Column 1: "Mean (SD)" containing descriptive stats for each variable.
-  # - Columns 2 to (n+1): Lower-triangular correlation coefficients (with stars) 
-  #   for variables with indices less than the row variable; remaining cells are "----".
+#   #-----------------------------
+#   # 3. Build the Combined Table
+#   #-----------------------------
+#   # The final table will have:
+#   # - Column 1: "Mean (SD)" containing descriptive stats for each variable.
+#   # - Columns 2 to (n+1): Lower-triangular correlation coefficients (with stars) 
+#   #   for variables with indices less than the row variable; remaining cells are "----".
   
-  n_vars <- ncol(num_data)
-  # Create an empty matrix with (n_vars) rows and (n_vars + 1) columns.
-  combined_table <- matrix("", nrow = n_vars, ncol = n_vars + 1)
+#   n_vars <- ncol(num_data)
+#   # Create an empty matrix with (n_vars) rows and (n_vars + 1) columns.
+#   combined_table <- matrix("", nrow = n_vars, ncol = n_vars + 1)
   
-  # Set column names: first column for descriptive stats, then one for each variable.
-  colnames(combined_table) <- c("Mean (SD)", colnames(num_data))
-  rownames(combined_table) <- colnames(num_data)
+#   # Set column names: first column for descriptive stats, then one for each variable.
+#   colnames(combined_table) <- c("Mean (SD)", colnames(num_data))
+#   rownames(combined_table) <- colnames(num_data)
   
-  roundDigits = 3
-  # Fill the first column with descriptive statistics in the format "mean (sd)"
-  for (i in 1:n_vars) {
-    combined_table[i, 1] <- paste0(round(means[i], roundDigits), " (", round(sds[i], roundDigits), ")")
-  }
+#   roundDigits = 3
+#   # Fill the first column with descriptive statistics in the format "mean (sd)"
+#   for (i in 1:n_vars) {
+#     combined_table[i, 1] <- paste0(round(means[i], roundDigits), " (", round(sds[i], roundDigits), ")")
+#   }
   
-  # Fill the correlation part:
-  # For each row i and for each variable j:
-  # - If i > j (i.e. lower triangle), fill with the correlation coefficient plus significance stars.
-  # - Otherwise (i <= j), fill with "----"
-  for (i in 1:n_vars) {
-    for (j in 1:n_vars) {
-      # In the combined table, correlation columns start at column index 2.
-      if (i > j) {
-        stars <- getStars(p_matrix[i, j])
-        combined_table[i, j + 1] <- paste0(round(cor_matrix[i, j], roundDigits), stars)
-      } else {
-        combined_table[i, j + 1] <- "-"
-      }
-    }
-  }
+#   # Fill the correlation part:
+#   # For each row i and for each variable j:
+#   # - If i > j (i.e. lower triangle), fill with the correlation coefficient plus significance stars.
+#   # - Otherwise (i <= j), fill with "----"
+#   for (i in 1:n_vars) {
+#     for (j in 1:n_vars) {
+#       # In the combined table, correlation columns start at column index 2.
+#       if (i > j) {
+#         stars <- getStars(p_matrix[i, j])
+#         combined_table[i, j + 1] <- paste0(round(cor_matrix[i, j], roundDigits), stars)
+#       } else {
+#         combined_table[i, j + 1] <- "-"
+#       }
+#     }
+#   }
   
-  # Convert the matrix to a data frame for stargazer
-  combined_table_df <- as.data.frame(combined_table)
+#   # Convert the matrix to a data frame for stargazer
+#   combined_table_df <- as.data.frame(combined_table)
   
-  #-----------------------------
-  # 4. Output the Combined Table using stargazer
-  #-----------------------------
-  stargazer(combined_table_df, type = "text", summary = FALSE, rownames = TRUE,
-            title = "Robustness Analysis for Different Versions of the Structural Similarity Measure")
-}
+#   #-----------------------------
+#   # 4. Output the Combined Table using stargazer
+#   #-----------------------------
+#   stargazer(combined_table_df, type = "text", summary = FALSE, rownames = TRUE,
+#             title = "Robustness Analysis for Different Versions of the Structural Similarity Measure")
+# }
 
-subsetForCorrelogram = subset(redditPanel, select = c(networkSimilarity_q0p5,networkSimilarity_q1,networkSimilarity_q2,networkSimilarity))
-makeSummaryTable(subsetForCorrelogram)
+# subsetForCorrelogram = subset(redditPanel, select = c(networkSimilarity_q0p5,networkSimilarity_q1,networkSimilarity_q2,networkSimilarity))
+# makeSummaryTable(subsetForCorrelogram)
