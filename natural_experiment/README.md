@@ -1,1 +1,1 @@
-
+This folder contains the main script used to run the analysis for the natural experiment part of the paper. The script *5_R_script.R* contains the primary code for analyzing the natural experiment data.
