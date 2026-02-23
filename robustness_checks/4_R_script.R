@@ -256,6 +256,8 @@ etable(m1d,m2d,m3d,m4d,m5d,m6d, tex = TRUE, cluster = c('author', 'receiver'), f
 ####################################################################################################################
 
 #Note: there might be multicollinearity in the given model, so numerical instability in estimates is possible.
+#the numerical instability and differences in estimates could arise from BLAS/LAPACK/floating-point implementations across differences across computer environments.
+
 
 redditPanel = read_parquet('/data/redditPanel_week_structuralMeasures_all_withDirectedTox_deidentified.parquet')
 names(redditPanel)
@@ -309,6 +311,7 @@ etable(m2, tex = TRUE, cluster = c('author', 'receiver'), fitstat=c('n', 'r2'), 
 ####################################################################################################################
 
 #Note: there might be multicollinearity in the given model, so numerical instability in estimates is possible.
+#the numerical instability and differences in estimates could arise from BLAS/LAPACK/floating-point implementations across differences across computer environments.
 
 m1 = feols(networkSimilarity ~ sbmEquivalence + eigCentrSim + clusterSim + neighborOverlap + subredditOverlap + eigCenrAuthor + eigCenrReceiver + clusterAuthor + clusterReceiver, redditPanel, fixef.rm = 'singleton', cluster = c('author','receiver'))
 m2 = feols(networkSimilarity ~ sbmEquivalence + eigCentrSim + clusterSim + neighborOverlap + subredditOverlap + eigCenrAuthor + eigCenrReceiver + clusterAuthor + clusterReceiver  | author + receiver + week + subreddit, redditPanel, fixef.rm = 'singleton', cluster = c('author','receiver'))
