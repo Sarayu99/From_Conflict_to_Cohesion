@@ -84,7 +84,7 @@ to_odds_ratio <- function(model) {
 ####################################################################################################################
 
 #import the data
-redditPanel = read_parquet("/data/redditPanel_week_by_thread_de_identified.parquet")
+redditPanel = read_parquet("/data/redditPanel_week_by_thread_de_identified_FINAL.parquet")
 setDT(redditPanel)
 
 # scale the variables
@@ -123,7 +123,7 @@ etable(m1,m2,m3,m4,m5,m6, tex = FALSE, fitstat=c('n', 'pr2'), signif.code = c("*
 # Robustness Analyses: Exclusion of likly bots (Table A5)
 ####################################################################################################################
 #import the data
-redditPanel = read_parquet("/data/redditPanel_week_by_thread_de_identified.parquet")
+redditPanel = read_parquet("/data/redditPanel_week_by_thread_de_identified_FINAL.parquet")
 setDT(redditPanel)
 
 gc()
@@ -163,7 +163,7 @@ etable(m1,m2,m3,m4,m6,m7, tex = TRUE, cluster = c('author', 'receiver'), fitstat
 # Robustness Analyses: dropping profanity, NTA, and alternate convex combinations of directedness (Table A6)
 # ####################################################################################################################
 
-redditPanel = read_parquet('/data/redditPanel_week_drop_profanity_de_identified.parquet')
+redditPanel = read_parquet('/data/redditPanel_week_drop_profanity_de_identified_FINAL.parquet')
 
 # scale the variables
 redditPanel$networkSimilarity = as.vector(scale(redditPanel$networkSimilarity))
@@ -171,7 +171,7 @@ redditPanel$languageSimilarity_commentLevel = as.vector(scale(redditPanel$langua
 redditPanel$directed_tox = as.vector(scale(redditPanel$directed_tox))
 m1 = feols(directed_tox ~ networkSimilarity + languageSimilarity_commentLevel | dyad + week + subreddit , redditPanel, fixef.rm = 'singleton', cluster = c('author','receiver'))
 
-redditPanel = read_parquet('/data/redditPanel_week_by_thread_drop_nta_de_identified.parquet')
+redditPanel = read_parquet('/data/redditPanel_week_by_thread_drop_nta_de_identified_FINAL.parquet')
 
 # scale the variables
 redditPanel$networkSimilarity = as.vector(scale(redditPanel$networkSimilarity))
@@ -179,7 +179,7 @@ redditPanel$languageSimilarity_commentLevel = as.vector(scale(redditPanel$langua
 redditPanel$directed_tox = as.vector(scale(redditPanel$directed_tox))
 m2 = feols(directed_tox ~ networkSimilarity + languageSimilarity_commentLevel | dyad + week + subreddit , redditPanel, fixef.rm = 'singleton', cluster = c('author','receiver'))
 
-redditPanel = read_parquet("/data/redditPanel_week_by_thread_de_identified.parquet")
+redditPanel = read_parquet("/data/redditPanel_week_by_thread_de_identified_FINAL.parquet")
 
 # scale the variables
 redditPanel$networkSimilarity = as.vector(scale(redditPanel$networkSimilarity))
@@ -203,7 +203,7 @@ etable(m1,m2,m3,m4,m5, tex = TRUE, cluster = c('author', 'receiver'), fitstat=c(
 # Robustness Analyses: Alternative Toxicity Measures (Table A7)
 ####################################################################################################################
 #import the data
-redditPanel = read_parquet("/data/redditPanel_week_by_thread_de_identified.parquet")
+redditPanel = read_parquet("/data/redditPanel_week_by_thread_de_identified_FINAL.parquet")
 
 setDT(redditPanel)
 setDT(redditPanel)
@@ -258,7 +258,7 @@ etable(m1d,m2d,m3d,m4d,m5d,m6d, tex = TRUE, cluster = c('author', 'receiver'), f
 #Note: there might be multicollinearity in the given model, so numerical instability in estimates is possible.
 #The numerical instability and differences in estimates could arise from different BLAS/LAPACK/floating-point implementations across different computer environments.
 
-redditPanel = read_parquet('/data/redditPanel_week_structuralMeasures_all_withDirectedTox_deidentified.parquet')
+redditPanel = read_parquet('/data/redditPanel_week_structuralMeasures_all_withDirectedTox_deidentified_FINAL.parquet')
 names(redditPanel)
 
 # scale the variables
