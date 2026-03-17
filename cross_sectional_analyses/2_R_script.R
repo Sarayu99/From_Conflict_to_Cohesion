@@ -55,8 +55,8 @@ suppressMessages(library(arrow))
 suppressMessages(library(data.table))
 
 
-data_path2 <- "/data/redditPanel_week_by_thread_de_identified.parquet"
-data_path3 <- "/data/redditPanel_week_structuralMeasures_all_withDirectedTox_deidentified.parquet"
+data_path2 <- "/data/redditPanel_week_by_thread_de_identified_FINAL.parquet"
+data_path3 <- "/data/redditPanel_week_structuralMeasures_all_withDirectedTox_deidentified_FINAL.parquet"
 
 
 # Note: Since our data is in .parquet format, we utilize the
