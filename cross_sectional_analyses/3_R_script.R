@@ -55,7 +55,7 @@ cat('fixest version')
 packageVersion("fixest")
 
 # import data
-redditPanel = read_parquet("/data/redditPanel_week_by_thread_de_identified.parquet")
+redditPanel = read_parquet("/data/redditPanel_week_by_thread_de_identified_FINAL.parquet")
 
 # scale the variables
 redditPanel$networkSimilarity = as.vector(scale(redditPanel$networkSimilarity))
